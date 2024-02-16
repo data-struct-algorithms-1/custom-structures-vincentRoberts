@@ -21,6 +21,7 @@ dependencies {
     // With compose.desktop.common you will also lose @Preview functionality
     implementation(compose.desktop.currentOs)
     implementation("org.jetbrains.compose.material3:material3-desktop:1.4.3")
+    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
 
 compose.desktop {
