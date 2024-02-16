@@ -20,6 +20,7 @@ dependencies {
     // (in a separate module for demo project and in testMain).
     // With compose.desktop.common you will also lose @Preview functionality
     implementation(compose.desktop.currentOs)
+    implementation("org.jetbrains.compose.material3:material3-desktop:1.4.3")
 }
 
 compose.desktop {
