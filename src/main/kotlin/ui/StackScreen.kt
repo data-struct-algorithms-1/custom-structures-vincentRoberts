@@ -10,9 +10,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-//import datastructures.FIFOStack
+import datastructures.FIFOStack
 import datastructures.LIFOStack
-//import datastructures.fifoStackOf
+import datastructures.fifoStackOf
 import datastructures.lifoStackOf
 import interfaces.Stack
 
@@ -28,9 +28,15 @@ fun StackScreen() {
 
         val stackList = listOf(
             lifoStackOf(1.0, 2.0, 3.0, 4.0),
-            LIFOStack<String>().apply { pushAll(setOf("MySQL", "SQLite", "Mongo")) }
+            LIFOStack<String>().apply { pushAll(setOf("MySQL", "SQLite", "Mongo")) } ,
+            FIFOStack<String>().apply {
+                push("1st Element In")
+                push("2nd Element In")
+                push("3rd Element In")
+                push("4th Element In")
+            },
+            fifoStackOf("Cat", "Dog", "Horse", "Cow")
         )
-
         LazyColumn(modifier = Modifier.weight(1f)) {
             items(stackList) { stack ->
                 StackContent(stack = stack, stack.javaClass.simpleName)
