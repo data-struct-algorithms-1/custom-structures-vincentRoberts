@@ -51,6 +51,30 @@ fun LinkedListScreen(list: LinkedList<String>) {
             Text("Add Last")
         }
 
+        Spacer(modifier = Modifier.width(8.dp))
+        Button(onClick = {
+            list.removeFirst()
+            listSize = list.size()
+        }) {
+            Text("Remove First")
+        }
+
+        Spacer(modifier = Modifier.width(8.dp))
+        Button(onClick = {
+            list.removeLast()
+            listSize = list.size()
+        }) {
+            Text("Remove Last")
+        }
+
+        Spacer(modifier = Modifier.width(8.dp))
+        Button(onClick = {
+            list.clear()
+            listSize = list.size()
+        }) {
+            Text("Clear")
+        }
+
         Spacer(modifier = Modifier.height(8.dp))
         Text("List Elements:")
 
