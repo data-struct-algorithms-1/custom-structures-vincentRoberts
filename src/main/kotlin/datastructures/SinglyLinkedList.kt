@@ -19,11 +19,31 @@ class SinglyLinkedList<T> : LinkedList<T>{
     }
 
     override fun removeFirst() {
-        TODO("Not yet implemented")
+        if (!isEmpty()) {
+            if (size == 1) {
+                head = null
+            } else {
+                head = head?.next
+            }
+            size--
+        }
     }
 
     override fun removeLast() {
-        TODO("Not yet implemented")
+        if (isEmpty()) return
+
+        if (size == 1) {
+            head = null
+        } else {
+            var current = head
+            var previous: Node<T>? = null
+            while (current?.next != null) {
+                previous = current
+                current = current.next
+            }
+            previous?.next = null
+        }
+        size--
     }
 
     override fun clear() {
@@ -61,5 +81,15 @@ class SinglyLinkedList<T> : LinkedList<T>{
 
 
     override fun size() = size
+
+    override fun toString(): String {
+        var string = ""
+        var current = head
+        while (current != null) {
+            string += "${current.data} -> "
+            current = current.next
+        }
+        return string
+    }
 
 }
