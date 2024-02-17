@@ -40,6 +40,14 @@ fun QueueScreen(queue: CustomQueue<String>) {
             Text("Enqueue")
         }
 
+        Button(onClick = { queue.dequeue() }) {
+            Text("Dequeue")
+        }
+
+        Button(onClick = { while (!queue.isEmpty()) queue.dequeue() }) {
+            Text("Clear")
+        }
+
         Text("Queue Size: ${queue.size()}")
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -51,3 +59,4 @@ fun QueueScreen(queue: CustomQueue<String>) {
         }
     }
 }
+
