@@ -1,0 +1,60 @@
+package ui
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import interfaces.LinkedList
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LinkedListScreen(list: LinkedList<String>) {
+
+    var listSize by remember { mutableStateOf(list.size()) }
+    var inputText by remember { mutableStateOf("") }
+
+    Column(Modifier.padding(16.dp))
+    {
+        Text(
+            "Singly Linked List",
+            style = MaterialTheme.typography.headlineLarge,
+            color = MaterialTheme.colorScheme.primary
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+        Text("List Size: $listSize")
+
+        Spacer(modifier = Modifier.height(16.dp))
+        OutlinedTextField(
+            value = inputText,
+            onValueChange = { inputText = it },
+            label = { Text("Enter element") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.width(8.dp))
+        Button(onClick = {
+            list.addFirst(inputText)
+            listSize = list.size()
+            inputText = ""
+        }) {
+            Text("Add First")
+        }
+
+        Spacer(modifier = Modifier.width(8.dp))
+        Button(onClick = {
+            list.addLast(inputText)
+            listSize = list.size()
+            inputText = ""
+        }) {
+            Text("Add Last")
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Text("List Elements:")
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(list.toString())
+    }
+}

@@ -1,5 +1,5 @@
 package ui
 
 enum class MenuItem {
-    Stacks, Queue
+    Stacks, Queue, SinglyLL
 }
