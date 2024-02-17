@@ -25,7 +25,7 @@ fun LinkedListScreen(list: LinkedList<String>) {
     {
         Spacer(modifier = Modifier.height(64.dp))
         Text(
-            "Singly Linked List",
+            text ="${list.javaClass}",
             style = MaterialTheme.typography.headlineLarge,
             color = MaterialTheme.colorScheme.primary
         )

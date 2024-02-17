@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
@@ -21,6 +22,7 @@ import androidx.compose.ui.window.application
 import com.example.compose.AppTheme
 import datastructures.CustomQueue
 import datastructures.SinglyLinkedList
+import datastructures.DoublyLinkedList
 import ui.LinkedListScreen
 import ui.MenuItem
 import ui.QueueScreen
@@ -34,6 +36,7 @@ fun App() {
     var selectedMenuItem by remember { mutableStateOf<MenuItem?>(null) }
     val queue by remember { mutableStateOf(CustomQueue<String>()) }
     val singlyLL by remember { mutableStateOf(SinglyLinkedList<String>()) }
+    val doublyLL by remember { mutableStateOf(DoublyLinkedList<String>()) }
 
     Scaffold(
         topBar = {
@@ -62,6 +65,17 @@ fun App() {
                         }
                     }
                     Spacer(modifier = Modifier.width(width = 16.dp))
+                    IconButton(onClick = { selectedMenuItem = MenuItem.DoublyLL }) {
+                        Row() {
+                            Icon(
+                                Icons.Default.Star,
+                                contentDescription = "Doubly Linked List"
+                            )
+                            Spacer(modifier = Modifier.width(width = 4.dp))
+                            Text("Doubly LL", modifier = Modifier.padding(top = 2.dp))
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(width = 16.dp))
                     IconButton(onClick = { selectedMenuItem = MenuItem.SinglyLL }) {
                         Row() {
                             Icon(
@@ -80,6 +94,7 @@ fun App() {
                 MenuItem.Stacks -> StackScreen()
                 MenuItem.Queue -> QueueScreen(queue)
                 MenuItem.SinglyLL -> LinkedListScreen(singlyLL)
+                MenuItem.DoublyLL -> LinkedListScreen(doublyLL)
                 else -> StackScreen()
             }
         }
